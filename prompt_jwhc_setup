@@ -150,11 +150,11 @@ function prompt_jwhc_setup {
   zstyle ':prezto:module:python:info:virtualenv' format '%f%F{3}(%v)%F{7} '
 
   # Set up non-zero return value display
-  local show_return="✘ "
+  # local show_return="✘ "
   # Default is to show the return value
-  if zstyle -T ':prezto:module:prompt' show-return-val; then
-    show_return+='%? '
-  fi
+  # if zstyle -T ':prezto:module:prompt' show-return-val; then
+  #  show_return+='%? '
+  # fi
 
   # Get the async worker set up.
   _jwhc_cur_git_root=''
@@ -165,7 +165,7 @@ function prompt_jwhc_setup {
   # Define prompts.
   PROMPT='%F{3}joshwong:${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_jwhc_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
   RPROMPT='$python_info[virtualenv]${editor_info[overwrite]}%(?:: %F{1}'
-  RPROMPT+=${show_return}
+  # RPROMPT+=${show_return}
   RPROMPT+='%f)${VIM:+" %B%F{6}V%f%b"}${_prompt_jwhc_git}'
   SPROMPT='zsh: correct %F{1}%R%f to %F{2}%r%f [nyae]? '
 }
