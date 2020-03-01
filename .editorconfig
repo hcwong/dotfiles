@@ -1,0 +1,6 @@
+# top-most EditorConfig file
+root = true
+
+[*.{java,py}]
+indent_size = 4
+indent_style = space
