@@ -1,0 +1,63 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Modified by jw
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# My zsh customizations
+
+# Get aliases
+source ~/.aliases.sh
+
+# For option
+bindkey "^[f" forward-word
+bindkey "^[b" backward-word
+
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# ranger-cd
+function ranger-cd {
+    # create a temp file and store the name
+    tempfile="$(mktemp -t tmp.XXXXXX)"
+
+    # run ranger and ask it to output the last path into the
+    # temp file
+    ranger --choosedir="$tempfile" "${@:-$(pwd)}"
+
+    # if the temp file exists read and the content of the temp
+    # file was not equal to the current path
+    test -f "$tempfile" &&
+    if [ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]; then
+        # change directory to the path in the temp file
+        cd -- "$(cat "$tempfile")"
+    fi
+
+    # its not super necessary to have this line for deleting
+    # the temp file since Linux should handle it on the next
+    # boot
+    rm -f -- "$tempfile"
+}
+
+# Tmux-wrapper for my cursor
+function tmux-wrapper() {
+    tmux "$@";
+    printf '\e[5 q';
+}
+
+# Overload system default 256 colors with gruvbox colors
+source "$HOME/gruvbox_256palette.sh"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# Load in extra stuff if this is my main computer
+# Comment this out if on first setup
+source .zshextras

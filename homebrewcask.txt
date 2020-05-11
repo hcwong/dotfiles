@@ -1,0 +1,4 @@
+chromedriver
+ngrok
+osxfuse
+xquartz
