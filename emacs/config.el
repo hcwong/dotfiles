@@ -40,7 +40,55 @@
       doom-unicode-font (font-spec :family "Iosevka" :size 13)
       doom-big-font (font-spec :family "Iosevka" :size 19))
 
+(setq org-todo-keywords
+      '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "DEFERRED" "CANCELLED")))
 
+(setq org-tag-alist '(("Learning" . ?l) ("Personal" . ?p) ("Chore" . ?c)))
+
+;; Load centaur tabs (to remove this once I get used to emacs proper)
+(define-key evil-normal-state-map (kbd "g n") 'centaur-tabs-forward)
+(define-key evil-normal-state-map (kbd "g m") 'centaur-tabs-backward)
+
+;; Store links for org
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c C-l") 'org-insert-link)
+
+;; Org Journal notes
+(setq org-journal-dir "~/org/journal/")
+(setq org-journal-date-format "%A, %d %B %Y")
+(setq org-journal-file-format "Week-of-%d-%m-%Y")
+(setq org-journal-file-type "'weekly")
+(setq org-journal-find-file 'find-file)
+(setq org-journal-file-header "#+TAGS:\n")
+(require 'org-journal)
+
+;; Typescript and React formatting: START
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+;; TSX formatting
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+          (lambda ()
+            (when (string-equal "tsx" (file-name-extension buffer-file-name))
+              (setup-tide-mode))))
+;; enable typescript-tslint checker
+(flycheck-add-mode 'typescript-tslint 'web-mode)
+
+;; Typescript and React formatting: END
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
