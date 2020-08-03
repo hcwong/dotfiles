@@ -1,0 +1,3 @@
+## Some problems when installing doom emacs
+
+`M-x all-the-icons-install-fonts` or you might get chinese characters on the mode-line. See [https://github.com/seagle0128/.emacs.d/issues/27](here) for more info.

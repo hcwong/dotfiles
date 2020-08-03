@@ -1,6 +1,11 @@
 # top-most EditorConfig file
 root = true
 
-[*.{java,py,c}]
+# Default to two spacing
+[*]
+indent_size = 2
+indent_style = space
+
+[*.{java,py,c,cpp}]
 indent_size = 4
 indent_style = space
