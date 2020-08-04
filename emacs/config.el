@@ -74,6 +74,10 @@
 )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
+;; prettier-js on save
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook 'prettier-js-mode)
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one

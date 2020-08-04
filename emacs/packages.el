@@ -50,4 +50,7 @@
 ;(unpin! t)
 
 (package! org-journal)
+
+;; Web stuff
 (package! tide)
+(package! prettier-js)
