@@ -61,6 +61,7 @@
 (setq org-journal-find-file 'find-file)
 (setq org-journal-file-header "#+TAGS:\n")
 (require 'org-journal)
+(require 'org-tempo)
 
 ;; Web Mode indent
 (defun my-web-mode-hook ()
@@ -80,6 +81,12 @@
 
 ;; Use xelatex as latex compiler
 (setq org-latex-compiler "xelatex")
+;; Add <au keybind to insert default header
+(tempo-define-template "author"
+  '("#+AUTHOR: Joshua Wong\n")
+  "<au"
+  "Add author name"
+  'org-tempo-tags)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
