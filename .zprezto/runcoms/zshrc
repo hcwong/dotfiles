@@ -51,6 +51,14 @@ function tmux-wrapper() {
     tmux "$@";
     printf '\e[5 q';
 }
+# moves screenshot to org image folder and renames it
+function move-ss() {
+  new_name=$1
+  full_path="/Users/joshuawong/org/images"
+  orig_file=$(ls -Art ~/Desktop | tail -n 2 | grep -i Screen)
+
+  mv ~/Desktop/"$orig_file" "$full_path"/"$new_name"
+}
 
 # Overload system default 256 colors with gruvbox colors
 source "$HOME/gruvbox_256palette.sh"
@@ -60,4 +68,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # Load in extra stuff if this is my main computer
 # Comment this out if on first setup
-source .zshextras
+source ~/.zshextras

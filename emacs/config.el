@@ -6,7 +6,7 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
+(setq user-full-name "Joshua Wong"
       user-mail-address "john@doe.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
@@ -29,11 +29,17 @@
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
+;; Record all org files under org-agenda
 (setq org-directory "~/org/")
+(setq org-agenda-files (list "~/org"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
+
+;; Load centaur tabs (to remove this once I get used to emacs proper)
+(define-key evil-normal-state-map (kbd "g n") 'centaur-tabs-forward)
+(define-key evil-normal-state-map (kbd "g m") 'centaur-tabs-backward)
 
 (setq doom-font (font-spec :family "Iosevka" :size 13 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
@@ -44,10 +50,6 @@
       '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE" "DEFERRED" "CANCELLED")))
 
 (setq org-tag-alist '(("Learning" . ?l) ("Personal" . ?p) ("Chore" . ?c)))
-
-;; Load centaur tabs (to remove this once I get used to emacs proper)
-(define-key evil-normal-state-map (kbd "g n") 'centaur-tabs-forward)
-(define-key evil-normal-state-map (kbd "g m") 'centaur-tabs-backward)
 
 ;; Store links for org
 (global-set-key (kbd "C-c l") 'org-store-link)
