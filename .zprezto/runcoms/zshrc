@@ -57,7 +57,7 @@ function move-ss() {
   full_path="/Users/joshuawong/org/images"
   orig_file=$(ls -Art ~/Desktop | tail -n 2 | grep -i Screen)
 
-  mv ~/Desktop/"$orig_file" "$full_path"/"$new_name"
+  mv ~/Desktop/"$orig_file" "$full_path"/"$new_name".png
 }
 
 # Overload system default 256 colors with gruvbox colors

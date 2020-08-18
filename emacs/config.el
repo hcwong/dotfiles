@@ -83,6 +83,7 @@
 
 ;; Use xelatex as latex compiler
 (setq org-latex-compiler "xelatex")
+
 ;; Add <au keybind to insert default header
 (tempo-define-template "author"
   '("#+AUTHOR: Joshua Wong\n")
@@ -90,6 +91,11 @@
   "Add author name"
   'org-tempo-tags)
 
+(tempo-define-template "screenshots"
+  '("#+NAME: \n#+ATTR_ORG: :width 600")
+  "<ss"
+  "Screenshot tags"
+  'org-tempo-tags)
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
