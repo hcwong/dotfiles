@@ -30,9 +30,9 @@ au VimLeave * set guicursor=
 
 " Keybindings
 imap jk <Esc>
-map bn :bn<cr>
-map bm :bp<cr>
-map bd :lclose<bar>bp<bar>bd #<CR>
+map gn :bn<cr>
+map gm :bp<cr>
+map td :lclose<bar>bp<bar>bd #<CR>
 map <silent> <C-l> :wincmd l<CR>
 map <silent> <c-h> :wincmd h<CR>
 map <esc> :noh<cr>
