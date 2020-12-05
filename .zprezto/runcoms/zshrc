@@ -66,6 +66,11 @@ source "$HOME/gruvbox_256palette.sh"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+# I can't read man pages for nuts it just seems like a blur
+function pman() {
+  man -t "$@" | open -f -a Preview;
+}
+
 # Load in extra stuff if this is my main computer
 # Comment this out if on first setup
 source ~/.zshextras

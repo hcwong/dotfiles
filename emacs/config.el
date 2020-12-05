@@ -96,6 +96,14 @@
   "<ss"
   "Screenshot tags"
   'org-tempo-tags)
+
+(setq lsp-clients-clangd-args '("-j=3"
+                                "--background-index"
+                                "--clang-tidy"
+                                "--completion-style=detailed"
+                                "--header-insertion=never"))
+(after! lsp-clangd (set-lsp-priority! 'clangd 2))
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
