@@ -41,9 +41,9 @@
 (define-key evil-normal-state-map (kbd "g n") 'centaur-tabs-forward)
 (define-key evil-normal-state-map (kbd "g m") 'centaur-tabs-backward)
 
-(setq doom-font (font-spec :family "Iosevka" :size 13 :weight 'semi-light)
+(setq doom-font (font-spec :family "Iosevka" :size 15 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "Iosevka") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Iosevka" :size 13)
+      doom-unicode-font (font-spec :family "Iosevka" :size 15)
       doom-big-font (font-spec :family "Iosevka" :size 19))
 
 (setq org-todo-keywords

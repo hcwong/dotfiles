@@ -60,6 +60,15 @@ function move-ss() {
   mv ~/Desktop/"$orig_file" "$full_path"/"$new_name".png
 }
 
+# moves screenshot to org image folder and renames it
+function move-ss-obsidian() {
+  new_name=$1
+  full_path="/Users/joshuawong/Desktop/obsidian/Attachments"
+  orig_file=$(ls -Art ~/Desktop | tail -n 2 | grep -i Screen)
+
+  mv ~/Desktop/"$orig_file" "$full_path"/"$new_name".png
+}
+
 # Overload system default 256 colors with gruvbox colors
 source "$HOME/gruvbox_256palette.sh"
 
@@ -74,3 +83,9 @@ function pman() {
 # Load in extra stuff if this is my main computer
 # Comment this out if on first setup
 source ~/.zshextras
+
+# Use openJDK
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# Use OpenJDK for compilation
+export CPPFLAGS="-I/usr/local/opt/openjdk/include"

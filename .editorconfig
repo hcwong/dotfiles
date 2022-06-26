@@ -6,6 +6,6 @@ root = true
 indent_size = 2
 indent_style = space
 
-[*.{java,py,c,cpp}]
+[*.{java,py,c,cpp,rs}]
 indent_size = 4
 indent_style = space
