@@ -1,14 +1,5 @@
 {
   "languageserver": {
-    "cquery": {
-      "command": "~/cquery/build/release/bin/cquery",
-      "args": ["--log-file=/tmp/cq.log"],
-      "filetypes": ["c", "cc", "cpp", "c++"],
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cacheDirectory": "/tmp/cquery"
-      }
-    },
     "golang": {
       "command": "~/go/bin/go-langserver",
       "filetypes": ["go"],
@@ -17,6 +8,16 @@
         "diagnosticsEnabled": true,
         "lintTool": "golint"
       }
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+      "initializationOptions": {
+          "cache": {
+            "directory": "/tmp/ccls"
+          }
+        }
     }
   },
   "coc.preferences.jumpCommand": "drop"

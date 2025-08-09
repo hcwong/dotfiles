@@ -109,18 +109,19 @@ call plug#end()
 " Customize coc
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-set updatetime=300
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ?  coc#_select_confirm() :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-n>" : "\<S-Tab>"
+" Tab to confirm selection or refresh
+"inoremap <silent><expr> <Tab>
+  "\ coc#pum#visible() ? coc#pum#confirm() :
+  "\ <SID>check_back_space() ? "\<Tab>" :
+  "\ coc#refresh()
+
+"" Shift-Tab to go to previous item
+"inoremap <silent><expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -252,3 +253,7 @@ let g:mkdp_preview_options = {
 " preview page title
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
+
+" Keymaps
+nnoremap <C-t> :terminal<CR>
+
