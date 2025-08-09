@@ -154,6 +154,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
+" Show buffers instead of tabs in airline top bar
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tabs = 0
 
 " fzf stuff
 " TODO: Should really clean this up. A lot of junk i don't use here
