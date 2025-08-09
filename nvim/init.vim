@@ -254,6 +254,6 @@ let g:mkdp_preview_options = {
 " ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 
-" Keymaps
-nnoremap <C-t> :terminal<CR>
-
+" Keymaps for terminal. Open in another split so CMD D just returns to the
+" preivous buffer by default
+nnoremap <C-t> :split term://$SHELL<CR>
